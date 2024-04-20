@@ -22,7 +22,7 @@ public class AuthorController {
     @GetMapping("/getBooksByAuthorId/{authorId}")
     @Retry(name = "retry1")
     ResponseEntity getBooksByAuthorId(@PathVariable Long authorId){
-
+        System.out.println("call api");
         Object list = restTemplate.getForObject("http://localhost:8801/books/"+authorId.toString(), List.class);
         return ResponseEntity.ok(list);
     }
